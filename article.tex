@@ -1,0 +1,86 @@
+
+\documentclass[12pt]{report}
+\include{text/setups/setups}
+\usepackage{caption}
+\usepackage[english]{babel}
+\usepackage{lineno, blindtext}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{mdframed}
+
+
+
+\begin{document}
+
+%cases with square brackets
+ \makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+\bibliographystyle{ieeetr}
+
+%\pdfminorversion=5 
+\pdfcompresslevel=9
+\pdfobjcompresslevel=9
+%\include{text/toc/toc}
+\include{text/aliases/aliases}
+
+
+
+
+
+
+
+\include{text/title_page/title}
+
+\pagebreak
+
+\begin{linenumbers}
+
+\include{text/toc/toc}
+
+\include{text/introduction/intro}
+
+\include{text/twopiprod/twopiprod}
+
+\include{text/genproc/genproc}
+
+\include{text/weights/weights}
+
+\include{text/unfold/unfold}
+
+\include{text/quality/quality}
+
+\include{text/radeff/radeff}
+
+\include{text/inpparam/inpparam}
+
+\include{text/concl/concl}
+
+
+\include{text/appendix/appendix}
+
+\end{linenumbers}
+
+\bibliography{gen_note}
+
+
+
+
+
+
+
+
+
+\newpage
+\end{document}

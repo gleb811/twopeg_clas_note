@@ -1,0 +1,78 @@
+\appendix
+\renewcommand{\thechapter}{A}
+ \refstepcounter{chapter}
+    \makeatletter
+   \renewcommand{\theequation}{\thechapter.\@arabic\c@equation}
+    \makeatother
+\chapter*{\LARGE Appendix A: Calculation of the angle $\alpha$}
+\label{app_a}
+\addcontentsline{toc}{chapter}{Appendix A: Calculation of the angle~$\alpha$}
+
+
+
+For the second set of kinematic variables the angle $\alpha_{\pi^{-}}$ between two planes A and B (see Fig.~\ref{fig:alpha_2nd_set}) should be calculated in the following way. Firstly two
+auxiliary vectors $\vec \gamma$  and
+$\vec \beta$ should be determined. The vector $\vec \gamma$ is the unit vector perpendicular to the three-momentum
+$\vec P_{\pi^{-}}$, directed toward the vector $(-\vec n_{z})$ and situated in the plane A, which is defined by 
+the three-momentum of initial proton and three-momentum of $\pi^{-}$. $\vec
+n_{z}$ is the unit vector directed along $z$-axis.
+The vector $\vec \beta$ is the unit vector perpendicular to the three-momentum of $\pi^{-}$, 
+directed toward the three-momentum of $\pi^{+}$ and situated in the plane B, which is defined 
+by all final hadrons. Note that the three-momenta of $\pi^{+}$,
+$\pi^{-}$, and $p'$ are in the same plane, since in c.m. frame
+their total three-momentum has to be equal to zero.
+ Then the angle between two planes  $\alpha_{\pi^{-}}$ is
+\begin{equation}
+\alpha_{\pi^{-}} = acos(\vec \gamma \cdot \vec \beta),
+\label{eq:cr_sec_anglealpha}
+\end{equation}
+where $acos$ is a function that runs between zero and
+$\pi$, while the angle $\alpha_{\pi^{-}}$ may vary between zero and
+$2\pi$. To determine the $\alpha$ angle in the
+range between $\pi$ and $2\pi$ 
+the relative direction between the $\pi^{-}$ three-momentum and the vector product $\vec \delta = [ \vec \gamma \times \vec \beta ]$ of the auxiliary vectors $\vec
+\gamma$ and $\vec \beta$ should be taken into account.
+%\begin{equation}
+%\vec \delta = [ \vec \gamma \times \vec \beta ]
+%\label{vecprod}
+%\end{equation}
+If the vector $\vec \delta$ is collinear to the three-momentum of $\pi^{-}$, the angle $\alpha_{\pi^{-}}$ is determined
+by~(\ref{eq:cr_sec_anglealpha}), and in a case of anti-collinearity by
+\begin{equation}
+\alpha_{\pi^{-}} = 2\pi - acos(\vec \gamma \cdot \vec \beta).
+\label{eq:cr_sec_anglealpha_var}
+\end{equation}
+The defined above vector $\vec \gamma$ can be expressed as
+\begin{eqnarray}
+\vec \gamma = a_{\alpha}(-\vec n_{z}) + b_{\alpha}\vec n_{P_{\pi^{-}}} & \text{with} \nonumber \\
+a_{\alpha} = \sqrt{\frac{1}{1 - (\vec n_{P_{\pi^{-}}} \cdot (-\vec n_{z} ) )^{2}}} & \text{and} \label{alphavec}\\
+b_{\alpha} = - (\vec n_{P_{\pi^{-}}} \cdot (-\vec n_{z} ) ) a_{\alpha} \textrm{ ,} \nonumber
+\end{eqnarray} 
+where $\vec n_{P_{\pi^{-}}}$ is the unit vector directed along the three-momentum of $\pi^{-}$ (see Fig.~\ref{fig:alpha_2nd_set}).
+
+Taking the scalar products $(\vec \gamma \cdot \vec
+n_{P_{\pi^{-}}})$ and $(\vec \gamma \cdot \vec  \gamma)$,
+it is straightforward to verify, that $\vec \gamma$ is the unit vector perpendicular to the three-momentum of $\pi^{-}$.
+
+The vector $\vec \beta$ can be obtained as
+\begin{eqnarray}
+\vec \beta = a_{\beta}\vec n_{P_{\pi^{+}}} + b_{\beta}\vec n_{P_{\pi^{-}}} & \text{with} \nonumber \\
+a_{\beta} = \sqrt{\frac{1}{1 - (\vec n_{P_{\pi^{+}}} \cdot \vec n_{P_{\pi^{-}}})^{2}}} & \text{and} \label{betavec}\\
+b_{\beta} = - (\vec n_{P_{\pi^{+}}} \cdot \vec n_{P_{\pi^{-}}}) a_{\beta} \textrm{ ,} \nonumber
+\end{eqnarray} 
+where $\vec n_{P_{\pi^{+}}}$ is the unit vector directed along the three-momentum of $\pi^{+}$.
+
+Again taking the scalar products $(\vec \beta \cdot \vec
+n_{P_{\pi^{-}}})$ and $(\vec \beta \cdot \vec  \beta)$,
+it is straightforward to see, that $\vec \beta$ is
+the unit vector perpendicular to the 
+three-momentum of $\pi^{-}$. 
+
+The angle $\alpha_{\pi^{-}}$ coincides with
+ the angle between the vectors $\vec \gamma$ and
+$\vec \beta$.
+So, the scalar product $( \vec \gamma \cdot
+\vec \beta )$ allows to determine the angle
+$\alpha_{\pi^{-}}$~(\ref{eq:cr_sec_anglealpha}). The angles $\alpha_{p'}$ and $\alpha_{\pi^+}$ from the other sets of kinematic
+variables are calculated in the similar
+way.

@@ -1,0 +1,140 @@
+\chapter{Unfolding the cross section value from the EG distributions}
+\label{unfold}
+
+%Formulae from Iuliia's wiki page.
+
+%The EG can be used for the purpose of obtaining the cross section value from the generated distributions. 
+
+As documented in Sect.~\ref{sect:data}, the value of the seven-differential double pion cross section is applied as a weight $f_{cr~sect}$ to each generated event. The EG distributions, where generated events are summed up with weights, can serve for the purpose of unfolding the values of integrated and single-differential cross sections. In order to do this, a statistically sufficient number of events needs to be generated in the $F_{flux}=0$ mode. Let's consider separately the issues of unfolding the values of integral and single-fold differential cross sections.
+
+
+
+\begin{enumerate}
+
+\item Unfolding the integral cross section value from the EG distributions.
+
+Let's assume that $N_{evt}^{\Delta W,\Delta Q^2}$ events are generated in a particular $W$ and $Q^2$ bin with the widths $\Delta W$ and $\Delta Q^2$, respectively. The EG yield $Y_{gen}$ is a weighted sum of these events,% and are summed up with weights $f_{cr~sect}$ in this bin. The result of this summation is the following:
+
+\begin{equation}
+Y_{gen} (\Delta W,\Delta Q^2)= \sum_{i=1}^{N_{evt}^{\Delta W,\Delta Q^2}} f_{cr~sect}^{i}  = \sigma(\Delta W,\Delta Q^2)N_{evt}^{\Delta W,\Delta Q^2},
+\label{eq:unfold_int_1}
+\end{equation}
+% \sum_{hadr~var}
+where $\sigma(\Delta W,\Delta Q^2)$ is the desired value of the integral cross section in $W$ and $Q^2$ bin, which should be unfolded.
+
+Therefore, in order to obtain the value of the integral cross section in a particular $W$ and $Q^2$ bin, one needs to scale the weighted sum of generated events with the number of events in that bin,
+
+\begin{equation}
+\sigma(\Delta W,\Delta Q^2)=\frac{Y_{gen} (\Delta W,\Delta Q^2)}{N_{evt}^{\Delta W,\Delta Q^2}}.\\
+\label{eq:unfold_int_2}
+\end{equation}
+
+
+
+It should be mentioned that Eq.~\eqref{eq:unfold_int_1} and Eq.~\eqref{eq:unfold_int_2} are only relevant for a large number of generated events, because the summation over all events implies also the summation over all final hadron variables, since the weight represents the seven-dimensional cross section. A single point in $W$ and $Q^2$ corresponds to the range in each final hadron variable. Therefore, in order to obtain the correct value of the integral cross section, these ranges must be well-populated with events. So,  Eq.~\eqref{eq:unfold_int_2} will not lead to the correct value of $\sigma(\Delta W,\Delta Q^2)$ if just few events are generated.
+
+The simplicity of the relations Eq.~\eqref{eq:unfold_int_1} and Eq.~\eqref{eq:unfold_int_2} is a consequence of the fact that proper normalization factors are embedded in the weight $f_{cr~sect}$, as Eq.~\eqref{eq:weight_cr_sect} demonstrates. These factors were chosen based on the demand that the weighted sum of the events must lead to  the integral cross section value. 
+
+
+It is convenient to use one-dimensional ROOT histograms to unfold the cross section from the EG distributions. Here is an example of obtaining the $W$ dependence of integrated cross section for a particular $Q^2$ bin by means of filling the histogram and its subsequent scaling. In order to do so, one should generate $N_{evt}$ in the limits $[W_{min},~W_{max}]$ and $[Q^2_{min},~Q^2_{max}]$. Then the following histogram should be created.
+
+TH1F *h\_w = new TH1F ("h\_w", "h\_w", $n_{bins}^{w}$, $W_{min}$, $W_{max}$);
+
+This histogram should be filled inside the loop over all events that are weighted with $f_{cr~sect}$.
+
+h\_w $\rightarrow$ Fill($W$, $f_{cr~sect}$);
+
+After that the histogram should be scaled with the factor $F$, which corresponds to the number of events inside one bin.
+
+$F = \frac{N_{evt}}{n_{bins}^{w}}$;
+
+This formula is a consequence of the flat event generation and the greater the number of generated events is, the more accurate this relation becomes.
+
+h\_w $\rightarrow$ Scale($1/F$);
+
+Eventually the histogram h\_w contains the $W$ dependence of the integrated cross section (in $\mu b$) in the limits $[W_{min},~W_{max}]$ for the $Q^2$ bin $[Q^2_{min},~Q^2_{max}]$.
+
+\item Unfolding the single-differential cross section value from the EG distributions.
+
+Let's again assume that $N_{evt}^{\Delta W,\Delta Q^2}$ events are generated in a particular $W$ and $Q^2$ bin with the widths $\Delta W$ and $\Delta Q^2$, respectively. If one is interested in the cross section that is single-differential in the final hadron variable $X$ in the bin $\delta X$ with the number of events $N_{evt}^{\Delta W,\Delta Q^2, \delta X}$, then firstly the following weighted sum should be considered.
+
+
+\begin{equation}
+\begin{aligned}
+Y_{gen}(\Delta W,\Delta Q^2,\delta X)&= \sum_{i=1}^{N_{evt}^{\Delta W,\Delta Q^2, \delta X}}f_{cr~sect}^{i} = N_{evt}^{\Delta W,\Delta Q^2, \delta X}\frac{d\sigma}{dX} (\Delta W,\Delta Q^2,\delta X)\Delta X = \\
+%&= N_{evt}^{\Delta W,\Delta Q^2,\delta X}\sum_{hadr~var \atop except~of~X}f_{cr~sect}^{i}(\Delta W,\Delta Q^2,\Delta \tau) = \\
+&= \left [ N_{evt}^{\Delta W,\Delta Q^2 }\frac{\delta X}{\Delta X}\right ] \left [\frac{d\sigma}{dX} (\Delta W,\Delta Q^2,\delta X)\Delta X\right ] = \\
+&= \frac{d\sigma}{dX} (\Delta W,\Delta Q^2,\delta X)N_{evt}^{\Delta W,\Delta Q^2}\delta X, 
+\label{eq:first_case}
+\end{aligned}
+\end{equation}
+
+
+where $\frac{d\sigma}{dX}(\Delta W,\Delta Q^2,\delta X)$  is the desired value of the single-differential cross section in $\Delta W$, $\Delta Q^2$ and $\delta X$ bin, which should be unfolded. $\Delta X$ is the full range kinematically available for the variable $X$. The fraction in the first square brackets appears, because one is interested in the amount of events in $\delta X$ bin, which in case of flat generation is connected with the total number of events in $\Delta W$, $\Delta Q^2$ bin by this fraction. The multiplier $\Delta X$ in the second square brackets appears, because according to Eq.~\eqref{eq:weight_cr_sect} the weight contains the normalization factors, which are equal to the full ranges in different final hadron variables and are needed to force the weights to give the proper integral cross section value upon the weighted summation of all events in the $\Delta W$, $\Delta Q^2$ bin. Since in this case the events are summed over all final variables, except of the variable $X$, the full range $\Delta X$ appears in the brackets. 
+
+Therefore, in order to obtain the value of the single-differential cross section in a particular $\Delta W$, $\Delta Q^2$, and $\delta X$ bin the following scaling of the generated yield in this bin should be performed.
+
+
+\begin{equation}
+\frac{d\sigma}{dX} (\Delta W,\Delta Q^2,\delta X) = \frac{Y_{gen}(\Delta W,\Delta Q^2,\delta X)}{N_{evt}^{\Delta W,\Delta Q^2}\delta X} =  \frac{Y_{gen}(\Delta W,\Delta Q^2,\delta X)}{N_{evt}^{\Delta W,\Delta Q^2,\delta X}\Delta X}
+\end{equation}
+
+In terms of one-dimensional ROOT histograms the unfolding procedure is described next. Let's assume that $N_{evt}$ events are generated in one $\Delta W$, $\Delta Q^2$ bin.
+
+\begin{itemize}
+\item For the invariant mass distributions the following steps should be carried out.
+
+TH1F *h\_m = new TH1F ("h\_m", "h\_m", $n_{bins}^{M}$, $M_{min}$ , $M_{max}$);
+
+h\_m $\rightarrow$ Fill(M, $f_{cr~sect}$);
+
+$F = \frac{N_{evt}(M_{max}-M_{min})}{n_{bins}^{M}}$;
+
+h\_m $\rightarrow$ Scale($1/F$);
+
+After that the histogram h\_m contains the single-differential cross section $\frac{d\sigma}{dM}$ in $\mu{\rm b/GeV}$.
+
+\item For the $\alpha_{h}$ and $\varphi_{h}$ angular distributions the following steps should be carried out.
+
+TH1F *h\_ang = new TH1F ("h\_ang", "h\_ang", $n_{bins}^{ang}$, 0, $2\pi$);
+
+h\_ang $\rightarrow$ Fill(ang, $f_{cr~sect}$);
+
+$F = \frac{2\pi N_{evt}}{n_{bins}^{ang}}$
+
+h\_ang $\rightarrow$ Scale($1/F$);
+
+After that the histogram h\_ang contains the single-differential cross section $\frac{d\sigma}{d\alpha_{h}}$ or $\frac{d\sigma}{d\varphi_{h}}$  in $\mu{\rm b/rad}$.
+
+\item For the $\frac{d\sigma}{d(-cos\theta_{h})}$ single-differential cross section the procedure is a little bit more complicated. Two one-dimensional histograms should be created first.
+
+TH1F *h1 = new TH1F("h1","h1", $n_{bins}^{th}$, 0 , $\pi$); 
+ 
+TH1F *h2 = new TH1F("h2","h2", $n_{bins}^{th}$, 0 , $\pi$);
+
+The histogram h1 should be filled inside the loop over all events.
+
+h1 $\rightarrow$ Fill($\theta_{h}$, $f_{cr~sect}$);
+
+After h1 is filled, the content of the histogram h2 should be set by the following way.
+
+ for (Short\_t i=1; ${\rm i}\leq n_{bins}^{th}$; i++)\{
+
+$\delta_{cos}$ = cos(h1$\rightarrow$GetBinLowEdge(i)) - cos(h1$\rightarrow$GetBinLowEdge(i)+h1$\rightarrow$GetBinWidth(i));
+
+h2$\rightarrow$  SetBinContent (i, h1 $\rightarrow$ GetBinContent(i)/$\delta_{cos}$);
+
+     \};
+
+
+
+h2 $\rightarrow$ Scale($1/N_{evt}$);
+
+ After that the histogram h2 contains the single-differential cross section $\frac{d\sigma}{d(-cos\theta_{h})}$  in $\mu{\rm b/rad}$.
+
+\end{itemize}
+
+
+\end{enumerate}
+
+

@@ -1,0 +1,31 @@
+\chapter{Conclusions and code availability}
+\label{sect:concl}
+
+
+TWOPEG code is available in the github repository (https://github.com/JeffersonLab/Hybrid-Baryons/). 
+One can obtain the code using the command: \\
+ {\em "git clone  https://github.com/JeffersonLab/Hybrid-Baryons.git"}.
+
+TWOPEG covers the kinematical region in $W$ from the double pion production threshold up to 4.5~GeV. For $W > 2.5$~GeV the higher the value of $W$ is, the less reliable the cross section shape becomes, since neither experimental data nor model predictions exist there.
+
+In $Q^2$ the EG works starting from 0.0005~GeV$^2$. In general it can work for any $Q^2$ greater than this lower limit, but one should remember that for $Q^2 > 1.3$~GeV$^2$ the shape of the differential cross sections is always the same as for $Q^2 = 1.3$~GeV$^2$ and only integral scaling takes place. 
+
+
+
+In the kinematical regions, where the information about the cross sections of the reaction $e p \rightarrow e' p' \pi^+ \pi^-$ exists (regions 1a, 1b, and 2a in Fig.~\ref{fig:gen_cover}) TWOPEG successfully reproduces them. In the regions I, II, and IV in Fig.~\ref{fig:gen_cover} the EG predicts the cross section value based on the known cross sections in the neighboring regions, therefore it can be used as a naive model there. In other regions the cross section estimation is less reliable, but good enough for the purpose of the modeling of experiments, for example for efficiency evaluation or background estimation.
+
+TWOPEG was developed in the framework of the preparation of the Hybrid Baryon Search proposal, which was approved by PAC44~\cite{PAC44:Hybrid}.
+It has already been successfully used for the run condition and efficiency estimations
+during the proposal preparation.
+For the event reconstruction the simplified version of the CLAS12 reconstruction software (FASTMC) was employed.
+TWOPEG will be applied for the two pion analysis of the CLAS12 data that are expected for this project.  
+
+It also will be used for the analysis of the CLAS12 data that will be collected in connection with the Nucleon Resonance Studies With CLAS12 proposal approved by PAC34~\cite{PAC34:twopi}.
+
+The cross sections obtained from TWOPEG have already been used to fill zones with zero CLAS acceptance in the analysis of the part of "e1e" data-set that ran with the hydrogen target~\cite{Fedotov:note}.
+
+In the analysis of the part of "e1e" data-set with deuteron target 
+the efficiency evaluation and the corrections due to the radiative effects and Fermi motion of the target proton have been carried out with TWOPEG~\cite{Skorodum:note}. For that purpose the generated events were passed through the standard CLAS packages "GSIM" and "recsis".
+
+TWOPEG is being established as a universal tool for Monte Carlo simulation of the reaction $e p \rightarrow e' p' \pi^+ \pi^-$ and can be used for future CLAS12 experiments as well as in the continuing CLAS data analyses.
+

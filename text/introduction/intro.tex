@@ -1,0 +1,38 @@
+
+
+\newpage
+\chapter{Introduction}
+\mbox{}\vspace{-\baselineskip}
+
+%Limitations of old EG. Reference to old EG. Needs for new EG in CLAS12 experiments.
+%Widening of $W - Q^{2}$ area. Very low $Q^{2}$ and high $W$. Mention Forward tagger and minimal $\theta$ 2.5$^{\rm o}$
+%Based on all existing data and recent model fit. References to the proposals. 
+
+
+The GENEV event generator (EG) for double pion electroproduction has been used for many years for the experimental data analysis. GENEV had rather complicated FORTRAN code, and several limitations that prevent its further use during the CLAS12 era. It was based on the differential cross sections from the older JM05 version of the JM model~\cite{Mokeev:2005re},~\cite{Aznauryan:2005tp},~\cite{Ripani:2000va}, which is a reaction model for double pion electroproduction. During the past several years this model has been further developed and significantly improved~\cite{Mokeev:2008iw},~\cite{Mokeev:2012vsa},~\cite{Mokeev:2015lda}. Furthermore,  the GENEV was only applicable up to $W \sim 2$ GeV and for $Q^2 > 0.3$ GeV$^2$, which excludes most of the region that will be under investigation with CLAS12 detector, namely high $W$ and low $Q^2$ (if forward tagger is in use). All these reasons have led to the need to develop a new two pion electroproduction EG TWOPEG, which is the subject of this note.
+
+
+Section~\ref{sect:two_pi_prod} briefly describes the kinematics of double pion electroproduction off the proton and gives an overview of some details of the experimental cross sections extraction and their subsequent analysis with the reaction model.
+
+TWOPEG uses the method of generation with weights. It means that the EG generates phase space distributions and applies the value of the seven-differential double pion cross section as a weight to each event. This method allows for a significantly more effective and faster generation process, especially in the areas of strong cross section dependencies. All the details of the generation process and obtaining of the final particles four-momenta in the lab frame are given in Sect.~\ref{sect:gen_proc}.
+
+TWOPEG employs the five-fold differential structure functions from the most recent versions of the JM model fit to all results on the charged double pion photo- and electroproduction cross sections from CLAS (both the published and preliminary data~\cite{Ripani:2002ss},~\cite{Fedotov:2008aa},~\cite{Golovach:note}). In the kinematical areas covered by CLAS data, TWOPEG successfully reproduces the available integrated and single-differential double pion cross sections. The quality of the description is illustrated in Sect.~\ref{quality}, where the EG distributions are compared with the available data.
+
+In order to extend the EG to areas not covered by the existing CLAS data, special extrapolation procedures have been applied that included additional  world data on the $W$ dependencies of the integrated double pion photoproduction cross sections~\cite{Wu:2005wf},~\cite{ABBHHM:1968aa}. The new approach allows for the generation of double pion events at extremely low $Q^2$ (starting from 0.0005 GeV$^2$) and high $W$ (up to 4.5 GeV). Details on the corresponding weight evaluation are given in Sect.~\ref{sect:data}.
+
+TWOPEG also makes it possible to obtain the cross section values from the generated distributions. It is helpful to obtain the model cross section value at any point of the kinematical phase space that is covered by the experiment and also to predict it in the uncovered areas. Section~\ref{unfold} contains the details of the unfolding procedure. 
+
+The EG also simulates the radiative effects according to the Mo and Tsai approach ~\cite{Mo:1968cg}. Section~\ref{rad_eff} describes the method of calculating the radiative cross section from the nonradiative one, as well as the method to generate the energy of the radiated photon, which is used for estimating the shift in $W$ and $Q^2$ caused by the radiative effects.
+
+Section~\ref{sect:inp_param} contains the description of the format of input and output files, as well as a short tutorial on how to run the code.
+
+The final Section~\ref{sect:concl} contains the link to the repository, where the TWOPEG code is located and also links to the analyses and proposals, for which the EG has already been used. 
+
+
+
+
+ 
+
+
+
+
